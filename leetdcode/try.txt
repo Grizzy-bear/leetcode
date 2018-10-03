@@ -1,19 +1,13 @@
-### 刷题leetcode
------------
-
--   CombinationSumII
-
--   Jump Game
--   Spiral Matrix
-
 - romans and integer.py
 - Sum CLoset.py
 - Median of Two Sorted Arrays.py
 - Jump Game.py
 - Spiral Matrix.py
+- try.txt
 - Palindrome Number.py
 - Merge k Sorted Lists.py
 - Regular Expression Matching.py
+- markdown.py
 - Reverse Nodes in k-Group.py
 - Add Two Numbers.py
 - Next Permutation.py
