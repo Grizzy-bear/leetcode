@@ -1,55 +1,45 @@
-import numpy as np
+class ListNode(object):
+     def __init__(self, x):
+         self.val = x
+         self.next = None
 
-class Solution:
-    # def __init__(self):
-    #     self.core()
-    #     self.addTwoNumbers()
 
-    def addTwoNumbers(self,l1,l2):
-        l3 = []
-        result = []
-        # self.core()
-        if len(l1) < len(l2):
-            l1 = list(l1)
-            l3 = np.pad(l1,(0,len(l2)-len(l1)),'constant')
-            # core(l2,l3)
-            # print(self.core(l2,l3))
-            self.out(self.core(l2,l3))
-            # result = self.core(l2,l3)
-            # Sum = ''.join(str(i) for i in result)
-            # print
-            # return l2,l3
-        elif len(l1)>len(l2):
-            l2 = list(l2)
-            l3 = np.pad(l2,(0,len(l1)-len(l2)),'constant')
-            self.out(self.core(l1,l3))
-            # print(self.core(l1,l3))
-            # return l1,l3
-        else:
-            self.out(self.core(l1,l2))``
-            # print(self.core(l1,l2))
-            # return l1,l2
-            # pass
-
-    def core(self,la,lb):
-        result = []
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        resultNode = None
         add = 0
-        length = len(la)
-        for k in range(length):
-            if (la[k] + lb[k] + add) / 10 <=0:
-                result.append(la[k]+lb[k]+add)
+        while True:
+            if l1.val == -1:
+                l1.val = 0
+            if l2.val == -1:
+                l2.val = 0
 
+            tSum = (l1.val + l2.val + add) % 10
+            add = (l1.val + l2.val + add) / 10
+            listn = ListNode(tSum)
+
+            if resultNode == None:
+                resultNode = listn
+                flagNode = resultNode
             else:
-                result.append((la[k]+lb[k]+add)%10)
-                add = (la[k]+lb[k]+add)/10
-        return result
-    def out(self,resulta):
-        Sum = ''.join(str(i) for i in resulta)
-        print(Sum)
+                flagNode.next = listn
+                flagNode = flagNode.next
 
+            if l1.next != None:
+                l1 = l1.next
+            else:
+                l1.val = -1
 
-# l1 = [1,2,4,7]
-# l2 = [5,8,3]
-l1 = input("数组一：")
-l2 = input("数组二：")
-Solution().addTwoNumbers(l1,l2)
+            if l2.next != None:
+                l2 = l2.next
+            else:
+                l2.val = -1
+
+            if l1.val == -1 and l2.val == -1:
+                break
+
+        if add != 0:
+            listn = ListNode(add)
+            flagNode.next = listn
+
+        return resultNode
